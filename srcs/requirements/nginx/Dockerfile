@@ -8,20 +8,7 @@ COPY /srcs/. .
 
 RUN apt-get update && apt-get install -y \
 	nginx \
-	mariadb-server \
 	openssl \
-	php-fpm \
-	php-mysql \
-	wordpress \
-	php-curl \
-	php-gd \
-	php-intl \
-	php-mbstring \
-	php-soap \
-	php-xml \
-	php-xmlrpc \
-	php-zip \
-	php-json\
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get clean -y \
 	&& mkdir -p /etc/nginx/ssl \
@@ -37,6 +24,6 @@ RUN apt-get update && apt-get install -y \
 	&& ln -s /etc/nginx/sites-available/my_server.localhost /etc/nginx/sites-enabled/ \
 	&& nginx -t
 
-ENTRYPOINT ["/home/srcs/config.sh"]
+ENTRYPOINT ["/home/srcs/config_nginx.sh"]
 
 EXPOSE 80 443

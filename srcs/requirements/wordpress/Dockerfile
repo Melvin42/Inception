@@ -23,13 +23,8 @@ RUN apt-get update && apt-get install -y \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& apt-get clean -y \
 	&& mv wordpress /var/www/my_server.localhost/ \
-	&& mv phpMyAdmin-5.1.1-all-languages /var/www/my_server.localhost/phpmyadmin \
-	&& chown -R www-data:www-data /var/www/ \
-	&& chmod -R 755 /var/www/ \
-	&& chmod -R 777 /var/www/my_server.localhost/phpmyadmin/tmp \
-	&& ln -s /etc/nginx/sites-available/my_server.localhost /etc/nginx/sites-enabled/ \
-	&& nginx -t
+	&& mv phpMyAdmin-5.1.1-all-languages /var/www/my_server.localhost/phpmyadmin
 
-ENTRYPOINT ["/home/srcs/config.sh"]
+ENTRYPOINT ["/home/srcs/config_wordpress.sh"]
 
 EXPOSE 80 443
