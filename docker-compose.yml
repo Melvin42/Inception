@@ -1,0 +1,38 @@
+version '3'
+
+services:
+    nginx:
+        build: ./nginx/Dockerfile
+            - "80:80"
+        restart: always
+
+services:
+    db:
+        depends_on:
+            - nginx
+        build: ./mariadb/Dockerfile
+        volumes:
+            - db_data: /var/lib/mariadb
+        restart: always
+        environment:
+            MARIADB_ROOT_PASSWORD: password
+            MARIA_DATABASE: wordpress
+            MARIA_USER: wordpress
+            MARIA_PASSWORD: wordpress
+
+services:
+    wordpress:
+        depends_on:
+            - db
+        image: ./wordpress/Dockerfile
+        ports:
+            - "80:80"
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_USER: wordpress
+            WORDPRESS_DB_PASSWORD: wordpress
+            WORDPRESS_DB_NAME: wordpress
+
+volumes:
+    db_data: {}

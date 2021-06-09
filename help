@@ -1,0 +1,46 @@
+##Generate new key and create a self signed certificate: 
+#
+#	openssl req \
+#	-x509 \
+#	-nodes \
+#	-days 365 \
+#	-newkey rsa:4096 \
+#	-keyout my_server.localhost.key.pem \
+#	-out my_server.localhost-x509.crt \
+#	-subj "/C=FR/L=Paris/CN=my_server.localhost/emailAddress=melperri@student.42.fr"
+#
+##Download Wordpress
+#
+#	curl -LO https://wordpress.org/latest.tar.gz
+#
+##Generate secret-key for wordpress
+#
+#	curl -s https://api.wordpress.org/secret-key/1.1/salt/
+#
+#Download Php-myadmin
+#
+#	wget https://files.phpmyadmin.net/phpMyAdmin/5.1.1/phpMyAdmin-5.1.1-all-languages.tar.gz
+#
+##desactiver nginx pour liberer le port 80
+#
+#	sudo service nginx stop
+#
+#Command docker-compose
+#	
+#	docker-compose up -d // demarrer l'ensemble des conteneurs en arrieres plan
+#	docker-compose down
+#	docker-compose pull  // recuperer l'ensemble des images decrites dans le fichier docker-compose.yml
+#	docker-compose ps // voir le status de l'ensemble de la stack
+#	docker-compose config // pour voir les erreurs de syntaxe
+#	docker-compose logs -f --tail 5 // afficher les logs de la stack
+#	docker-compose
+#	docker-compose
+#	docker-compose
+#	docker-compose
+#	docker-compose
+#
+#
+#
+#
+#
+#
