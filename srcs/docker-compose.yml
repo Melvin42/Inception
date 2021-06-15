@@ -7,10 +7,10 @@ services:
             - db_data: /home/melperri/data
         restart: always
         environment:
-            MARIADB_ROOT_PASSWORD: password
-            MARIA_DATABASE: wordpress
-            MARIA_USER: wordpress
-            MARIA_PASSWORD: wordpress
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MARIA_DATABASE: ${MARIA_DATABASE}
+            MARIA_USER: ${MARIA_USER}
+            MARIA_PASSWORD: ${MARIA_PASSWORD} 
 
 services:
     wordpress:
@@ -21,15 +21,15 @@ services:
             - "443:443"
         restart: always
         environment:
-            WORDPRESS_DB_HOST: db:3306
-            WORDPRESS_DB_USER: wordpress
-            WORDPRESS_DB_PASSWORD: wordpress
-            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+            WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+            WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+            WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
 
 services:
-    depends_on:
-        - wordpress
     nginx:
+        depends_on:
+            - wordpress
         build: ./requirements/nginx/Dockerfile
         ports:
             - "443:443"

@@ -27,20 +27,28 @@
 #
 #Command docker-compose
 #	
-#	docker-compose up -d // demarrer l'ensemble des conteneurs en arrieres plan
+#	docker-compose up -d			// demarrer l'ensemble des conteneurs en arrieres plan
 #	docker-compose down
-#	docker-compose pull  // recuperer l'ensemble des images decrites dans le fichier docker-compose.yml
-#	docker-compose ps // voir le status de l'ensemble de la stack
-#	docker-compose config // pour voir les erreurs de syntaxe
-#	docker-compose logs -f --tail 5 // afficher les logs de la stack
-#	docker-compose
+#	docker-compose pull				// recuperer l'ensemble des images decrites dans le fichier docker-compose.yml
+#	docker-compose ps				// voir le status de l'ensemble de la stack
+#	docker-compose config			// pour voir les erreurs de syntaxe
+#	docker-compose logs -f --tail 5	// afficher les logs de la stack
+#	docker volume create
 #	docker-compose
 #	docker-compose
 #	docker-compose
 #	docker-compose
 #
 #
+#SHELL COMMAND
 #
+# voir tous les services en cours
+#
+#	systemctl list-unit-files --type=service
+#
+# voir les user et leurs UID
+#
+#	awk -F: '{printf "%s:%s\n",$1,$3}' /etc/passwd
 #
 #
 #
