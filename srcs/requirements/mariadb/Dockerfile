@@ -2,11 +2,12 @@ FROM debian:buster
 
 MAINTAINER melperri <melperri@student.42.fr>
 
-WORKDIR ./
+WORKDIR /home/srcs/
 
 RUN apt-get update && apt-get install -y \
 	mariadb-server \
 	mariadb-client \
-	openssl
+	openssl \
+	vim
 
 EXPOSE 80 443

@@ -1,16 +1,31 @@
 version: '3'
 
 services:
-    nginx:
-        build: ./requirements/nginx/
-        restart: always
-
-services:
     db:
-        build: ./requirements/db/
+        build: ./requirements/mariadb/
         restart: always
+        environment:
+            MARIA_DATABASE: ${MARIA_DATABASE}
+            MARIA_USER: ${MARIA_USER}
+            MARIA_ROOT_PASSWORD: ${MARIA_ROOT_PASSWORD}
+            MARIA_PASSWORD: ${MARIA_PASSWORD} 
 
-services:
     wordpress:
         build: ./requirements/wordpress/
         restart: always
+        environment:
+            WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+            WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+            WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+            WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+
+    nginx:
+        build: ./requirements/nginx/
+        ports:
+          - "443:443"
+        restart: always
+        networks:
+          - nginx_network
+networks:
+    nginx_network:
+        external: true

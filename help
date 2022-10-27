@@ -52,3 +52,21 @@
 #
 #
 #
+#Edit /etc/hosts to add your server name to the list of host accepted
+#127.0.0.1 login.42.fr
+#
+#Create a new user named after your login and assign it to the different groups
+#sudo adduser login
+#
+#sudo usermod -aG sudo login
+#
+#sudo usermod -aG docker login
+#
+#
+#
+#LA METHODE MAISON
+#
+#make
+#make up
+#dans le dock nginx: service nginx start (penser a le cut dans la vm avant)
+#sudo docker-compose run -p 443:443 nginx
