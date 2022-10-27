@@ -1,0 +1,39 @@
+version '3'
+
+services:
+    db:
+        build: ./requirements/mariadb/Dockerfile
+        volumes:
+            - db_data: /home/melperri/data
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MARIA_DATABASE: ${MARIA_DATABASE}
+            MARIA_USER: ${MARIA_USER}
+            MARIA_PASSWORD: ${MARIA_PASSWORD} 
+
+services:
+    wordpress:
+        depends_on:
+            - db
+        build: ./requirements/wordpress/Dockerfile
+        ports:
+            - "443:443"
+        restart: always
+        environment:
+            WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+            WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+            WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+            WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+
+services:
+    nginx:
+        depends_on:
+            - wordpress
+        build: ./requirements/nginx/Dockerfile
+        ports:
+            - "443:443"
+        restart: always
+
+volumes:
+    db_data: {}
