@@ -10,4 +10,4 @@ RUN apt-get update && apt-get install -y \
 	wordpress \
 	vim
 
-EXPOSE 80 443
+EXPOSE 9000

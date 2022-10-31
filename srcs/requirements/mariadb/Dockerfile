@@ -9,5 +9,3 @@ RUN apt-get update && apt-get install -y \
 	mariadb-client \
 	openssl \
 	vim
-
-EXPOSE 80 443
