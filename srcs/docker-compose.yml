@@ -21,6 +21,8 @@ services:
         restart: always
         networks:
           - nginx_network
+        volumes:
+          - /home/zog/Inception/data:/home/data
 networks:
     nginx_network:
         external: true
