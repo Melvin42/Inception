@@ -22,4 +22,4 @@ RUN apt-get update && apt-get install -y \
 	&& rm -f /etc/nginx/sites-enabled/default \
 	&& nginx -t
 
-#EXPOSE 443
+EXPOSE 9000 443

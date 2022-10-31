@@ -3,19 +3,28 @@ version: '3'
 services:
     wordpress:
         build: ./requirements/wordpress/
-        volumes:
-            - /home/zog/Inception/srcs/data
         restart: always
+        volumes:
+          - /home/zog/Inception/data:/home/data
         environment:
             WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
             WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
             WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
             WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+        networks:
+          - nginx_network
 
     nginx:
         build: ./requirements/nginx/
-
           #        ports:
           #          - "443:443"
         restart: always
+        networks:
+          - nginx_network
+networks:
+    nginx_network:
+        external: true
 
+#volumes:
+#    wp_data: {}
+#    db_data: {}
