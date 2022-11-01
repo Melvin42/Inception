@@ -14,12 +14,11 @@ RUN apt-get update && apt-get install -y \
 	&& mv melperri.42.fr.conf /etc/nginx/sites-available/ \
 	&& mv ssl_key/melperri.42.fr.key.pem /etc/nginx/ssl/ \
 	&& mv ssl_key/melperri.42.fr-x509.crt /etc/nginx/ssl/ \
-	&& mkdir -p /var/www/melperri.42.fr/ \
-	&& cp -R index.html /var/www/melperri.42.fr/ \
-	&& chown -R www-data:www-data /var/www/ \
-	&& chmod -R 755 /var/www/ \
 	&& ln -s /etc/nginx/sites-available/melperri.42.fr.conf /etc/nginx/sites-enabled/ \
 	&& rm -f /etc/nginx/sites-enabled/default \
 	&& nginx -t
 
-EXPOSE 9000 443
+EXPOSE 8080
+
+	#&& chown -R www-data:www-data /home/data \
+	#&& chmod -R 755 /home/data/ \

@@ -17,3 +17,7 @@ down:
 
 ps:
 	sudo docker-compose ps
+
+re:
+	make down
+	make all

@@ -1,11 +1,14 @@
 version: '3'
 
 services:
+    db:
+        build: ./requirements/mariadb/
+        restart: always
     wordpress:
         build: ./requirements/wordpress/
         restart: always
         volumes:
-          - /home/zog/Inception/data:/home/data
+          - wp_data:/home/data
         environment:
             WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
             WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
@@ -16,17 +19,22 @@ services:
 
     nginx:
         build: ./requirements/nginx/
-          #        ports:
-          #          - "443:443"
+        ports:
+          - "8080:8080"
         restart: always
         networks:
           - nginx_network
         volumes:
-          - /home/zog/Inception/data:/home/data
+          - wp_data:/home/data
 networks:
     nginx_network:
         external: true
 
-#volumes:
-#    wp_data: {}
+volumes:
+    wp_data:
+        driver: local
+        driver_opts:
+          type: none
+          device: /home/zog/Inception/data
+          o: bind
 #    db_data: {}

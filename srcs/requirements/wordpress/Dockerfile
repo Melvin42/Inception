@@ -4,10 +4,12 @@ MAINTAINER melperri <melperri@student.42.fr>
 
 WORKDIR /home/srcs
 
+COPY ./tools/. .
+
 RUN apt-get update && apt-get install -y \
 	openssl \
 	php-fpm \
-	wordpress \
-	vim
+	vim \
+	&& cp -ruf /home/srcs/wordpress ../data/
 
-EXPOSE 9000
+EXPOSE 8080
