@@ -1,6 +1,5 @@
 all:
 	sudo docker-compose build \
-	&& sudo docker-compose up \
 	&& sudo docker-compose ps
 
 build:

@@ -19,6 +19,3 @@ RUN apt-get update && apt-get install -y \
 	&& nginx -t
 
 EXPOSE 8080
-
-	#&& chown -R www-data:www-data /home/data \
-	#&& chmod -R 755 /home/data/ \

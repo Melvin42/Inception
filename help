@@ -34,11 +34,9 @@
 #	docker-compose config			// pour voir les erreurs de syntaxe
 #	docker-compose logs -f --tail 5	// afficher les logs de la stack
 #	docker volume create
-#	docker-compose
-#	docker-compose
-#	docker-compose
-#	docker-compose
 #
+#	Pour tout clean
+#	docker system prune -a
 #
 #SHELL COMMAND
 #
@@ -69,4 +67,24 @@
 #make
 #make up
 #dans le dock nginx: service nginx start (penser a le cut dans la vm avant)
-#sudo docker-compose run -p 443:443 nginx
+#sudo docker-compose run --name nginx -p 443:443 nginx
+#
+#Pour creer les networks
+#sudo docker network create name
+#
+#
+#Configuer mariadb
+#
+#Modifier le fichier /etc/mysql/mariadb.conf.d/50-server.cnf
+#et remplacer l'ip par 0.0.0.0 pour ouvrir aux connexions exterieures
+#
+#MariaDB [(none)]> CREATE USER 'melperri'@'%' IDENTIFIED BY 'password';
+#
+#MariaDB [(none)]> GRANT ALL ON *.* TO 'melperri'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;
+#
+#MariaDB [(none)]> CREATE DATABASE IF NOT EXISTS db; GRANT ALL ON db.* TO 'melperri'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;
+#
+#TIPS MYSQL:
+#
+#Pour voir les users:
+#MariaDB [(none)]> SELECT User FROM mysql.user;
