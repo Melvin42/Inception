@@ -11,8 +11,10 @@ RUN apt-get update && apt-get install -y \
 	mariadb-client \
 	openssl \
 	vim \
-	&& useradd melperri \
 	&& mv ./50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 EXPOSE 3306
 
+ENTRYPOINT ["./config_mariadb.sh"]
+
+CMD ["mysqld"]

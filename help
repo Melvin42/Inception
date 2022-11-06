@@ -34,6 +34,7 @@
 #	docker-compose config			// pour voir les erreurs de syntaxe
 #	docker-compose logs -f --tail 5	// afficher les logs de la stack
 #	docker volume create
+#	docker exec -it container_name bash // pour rentrer dans un container running
 #
 #	Pour tout clean
 #	docker system prune -a

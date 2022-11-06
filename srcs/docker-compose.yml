@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+    db:
+        container_name: db
+        build: ./requirements/mariadb/
+        volumes:
+            - db_data:/var/lib/mysql
+        networks:
+          - nginx_network
+        restart: always
+
+    wordpress:
+        depends_on:
+          - "db"
+        container_name: wordpress
+        build: ./requirements/wordpress/
+        volumes:
+            - wp_data:/var/www/melperri.42.fr
+        environment:
+            WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+            WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+            WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+            WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+        networks:
+            - nginx_network
+        restart: always
+
+    nginx:
+        depends_on:
+          - "wordpress"
+        container_name: nginx
+        build: ./requirements/nginx/
+        volumes:
+            - wp_data:/var/www/melperri.42.fr
+        ports:
+            - "8080:8080"
+        networks:
+            - nginx_network
+        restart: always
+
+networks:
+    nginx_network:
+        driver: bridge
+
+volumes:
+    wp_data:
+        name: wp_data
+        driver: local
+        driver_opts:
+            type: none
+            device: ${VOLUMES}/wp_data
+            o: bind
+    db_data:
+        name: db_data
+        driver: local
+        driver_opts:
+          type: none
+          device: ${VOLUMES}/db_data
+          o: bind
