@@ -13,8 +13,6 @@ services:
         restart: always
 
     wordpress:
-        depends_on:
-          - "db"
         container_name: wordpress
         build: ./srcs/requirements/wordpress/
         volumes:
@@ -29,8 +27,6 @@ services:
         restart: always
 
     nginx:
-        depends_on:
-          - "wordpress"
         container_name: nginx
         build: ./srcs/requirements/nginx/
         volumes:
@@ -43,7 +39,6 @@ services:
 
 networks:
     nginx_network:
-        name: nginx_network
         driver: bridge
 
 volumes:
@@ -51,11 +46,11 @@ volumes:
         driver: local
         driver_opts:
             type: none
-            device: /home/zog/Inception/data
+            device: ${PWD}/data
             o: bind
     db_data:
         driver: local
         driver_opts:
           type: none
-          device: /home/zog/Inception/db_data
+          device: ${PWD}/db_data
           o: bind

@@ -7,11 +7,8 @@ WORKDIR /home/srcs
 COPY ./tools/. .
 
 RUN apt-get update && apt-get install -y \
-	openssl \
 	php \
-	php-fpm \
-	php-mbstring \
-	php-gd \
+	php7.3-fpm \
 	php-mysql \
 	vim \
 	&& apt-get clean \
@@ -19,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 	&& mkdir -p /var/www/melperri.42.fr \
 	&& chown -R www-data:www-data /var/www/melperri.42.fr \
 	&& chmod -R 755 /var/www/melperri.42.fr \
-	&& cp -ruf wordpress/* /var/www/melperri.42.fr \
+	&& cp -rf wordpress/* /var/www/melperri.42.fr/ \
 	&& mv www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 EXPOSE 9000
