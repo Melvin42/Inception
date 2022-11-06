@@ -15,3 +15,5 @@ RUN apt-get update && apt-get install -y \
 	&& mv ./50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
 EXPOSE 3306
+
+CMD ["mariadb", "--bind-address=0.0.0.0"]
