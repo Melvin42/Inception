@@ -19,6 +19,6 @@ RUN apt-get update && apt-get install -y \
 	&& ln -s /etc/nginx/sites-available/melperri.42.fr.conf /etc/nginx/sites-enabled/ \
 	&& rm -f /etc/nginx/sites-enabled/default
 
-EXPOSE 8080
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]

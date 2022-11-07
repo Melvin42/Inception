@@ -22,5 +22,5 @@ re:
 	make all
 
 fclean:
-	sudo rm -rf /home/zog/data/db_data/* \
-	&& sudo rm -rf /home/zog/data/wp_data/*
+	sudo rm -rf /home/zog/data/db_data/*
+	sudo rm -rf /home/zog/data/wp_data/*
