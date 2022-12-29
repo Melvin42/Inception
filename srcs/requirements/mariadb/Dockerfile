@@ -16,4 +16,4 @@ EXPOSE 3306
 
 ENTRYPOINT ["./config_mariadb.sh"]
 
-CMD ["mysqld", "--console"]
+CMD ["mysqld", "--disable-unix-socket"]

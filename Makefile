@@ -1,26 +1,31 @@
 all:
-	mkdir -p /home/zog/data/db_data
-	mkdir -p /home/zog/data/wp_data
+	mkdir -p /home/melperri/data/db_data
+	mkdir -p /home/melperri/data/wp_data
+	cd srcs \
+	&& sudo docker-compose up -d \
+	&& sudo docker-compose ps -a
 
 build:
-	sudo docker-compose build \
-	&& sudo docker-compose ps
+	mkdir -p /home/melperri/data/db_data
+	mkdir -p /home/melperri/data/wp_data
+	cd srcs \
+	&& sudo docker-compose build \
+	&& sudo docker-compose ps -a
 
 up:
-	sudo docker-compose up \
-	&& sudo docker-compose ps
+	cd srcs \
+	&& sudo docker-compose up -d \
+	&& sudo docker-compose ps -a
 
 down:
-	sudo docker-compose down \
-	&& sudo docker-compose ps
+	cd srcs \
+	&& sudo docker-compose down \
+	&& sudo docker-compose ps -a
 
 ps:
-	sudo docker-compose ps
+	cd srcs \
+	&& sudo docker-compose ps -a
 
 re:
 	make down
 	make all
-
-fclean:
-	sudo rm -rf /home/zog/data/db_data/*
-	sudo rm -rf /home/zog/data/wp_data/*

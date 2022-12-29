@@ -1,3 +1,10 @@
+MOT DE PASS DE LA VM: coucou
+MOT DE PASS DE L'ADMIN WORDPRESS melperri: vo0khtJ1YfZXH9j6^*
+MOT DE PASS DU USER WORDPRESS BipBoop : Pyzlf7DUylC%^8S6O%Pnpb*H
+
+#Command to export table from mysql
+#mysqldump -u melperri -p mariadb > wordpress_table_exported.sql
+#
 ##Generate new key and create a self signed certificate: 
 #
 #	openssl req \
